@@ -1,0 +1,16 @@
+.normal,
+.dimmed,
+header,
+body {
+  color: #fff;
+}
+
+/* Targets only the HUD modules */
+.module.clock, 
+.module.calendar, 
+.module.weather {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 8px;
+  backdrop-filter: blur(5px);
+}
