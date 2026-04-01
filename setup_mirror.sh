@@ -15,7 +15,7 @@ echo -e "${BLUE}Installing and Configuring Rclone...${NC}"
 sudo apt install rclone -y
 
 echo -e "${GREEN}ACTION REQUIRED: Follow the Rclone setup wizard.${NC}"
-rclone config
+rclone config &
 
 echo -e "${BLUE}Making a Local Directory for Images...${NC}"
 mkdir -p ~/MirrorPhotos
@@ -31,7 +31,7 @@ echo -e "${BLUE}Setting up Cron Job (Every 15 minutes)...${NC}"
 
 echo -e "${BLUE}Installing MagicMirror...${NC}"
 echo -e "${GREEN}ACTION REQUIRED: Follow the prompts for the MagicMirror installation script.${NC}"
-bash -c "$(curl -sL https://raw.githubusercontent.com/sdetweil/MagicMirror_scripts/master/raspberry.sh)"
+bash -c "$(curl -sL https://raw.githubusercontent.com/sdetweil/MagicMirror_scripts/master/raspberry.sh)" &
 
 # Stop the service to allow for module installation and config changes
 pm2 stop MagicMirror 2>/dev/null || ~/bin/pm2 stop MagicMirror 2>/dev/null
