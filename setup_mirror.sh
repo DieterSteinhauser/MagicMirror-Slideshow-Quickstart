@@ -2,7 +2,7 @@
 
 # --- Configuration ---
 # Replace these with your actual GitHub Raw URL details
-REPO_URL="https://raw.githubusercontent.com/DieterSteinhauser/MagicMirror-Slideshow-Quickstart/main"
+REPO_URL="https://raw.githubusercontent.com/DieterSteinhauser/MagicMirror-Slideshow-Quickstart/refs/heads/master"
 GREEN='\033[0;32m'
 BLUE='\033[0;34m'
 NC='\033[0m'
