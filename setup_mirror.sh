@@ -7,7 +7,7 @@ GREEN='\033[0;32m'
 BLUE='\033[0;34m'
 NC='\033[0m'
 
-echo -e "${BLUE}Starting Raspberry Pi Update...${NC}"
+echo -e "${GREEN}ACTION REQUIRED:Starting Raspberry Pi Update...${NC}"
 sudo apt update && sudo apt full-upgrade -y
 sudo apt autoclean && sudo apt autoremove -y
 
@@ -62,5 +62,22 @@ curl -sSL "$REPO_URL/custom.css" -o custom.css
 
 echo -e "${GREEN}Setup Complete! Restarting MagicMirror...${NC}"
 pm2 start MagicMirror || ~/bin/pm2 start MagicMirror
+
+
+echo -e "${BLUE}Disabling Screen Blanking (Always-On Display)...${NC}"
+AUTOSTART_FILE="$HOME/.config/lxsession/LXDE-pi/autostart"
+
+# Ensure the directory exists
+mkdir -p "$(dirname "$AUTOSTART_FILE")"
+
+# Create file if it doesn't exist
+touch "$AUTOSTART_FILE"
+
+# Add xset commands if they aren't already there
+for cmd in "@xset s off" "@xset -dpms" "@xset s noblank"; do
+    if ! grep -qxF "$cmd" "$AUTOSTART_FILE"; then
+        echo "$cmd" >> "$AUTOSTART_FILE"
+    fi
+done
 
 echo -e "${GREEN}ACTION REQUIRED: Restart the Device to see for full effect...${NC}"
