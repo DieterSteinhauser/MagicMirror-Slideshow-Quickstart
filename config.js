@@ -59,6 +59,7 @@ let config = {
 						// symbol: "calendar-check",
 						// url: "https://ics.calendarlabs.com/76/mm3137/US_Holidays.ics" // US Holidays
 						//url: "https://www.img.ufl.edu/calendar/ical/img-calendar.ics"  // IMG Calendar
+						//url: "https://www.eng.ufl.edu/news-events/events-calendar/feed/" // UF Engineering Calendar
 						url: "webcal://calendar.ufl.edu/live/ical/events/exclude_group/Admin/exclude_tag/closed%20event/category/Athletics/header/Athletics%20Events" // UF Athletics
 					}
 				]
