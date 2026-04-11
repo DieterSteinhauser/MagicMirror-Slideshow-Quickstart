@@ -15,6 +15,7 @@ echo -e "${BLUE}Installing and Configuring Rclone...${NC}"
 sudo apt install rclone -y
 
 echo -e "${GREEN}ACTION REQUIRED: Follow the Rclone setup wizard.${NC}"
+echo -e "${GREEN}ACTION REQUIRED: Name the remote 'drive' during configuration.${NC}"
 # Attach rclone to the current terminal
 if [ -t 0 ]; then
   # We're already in a terminal – just run it
@@ -28,11 +29,11 @@ fi
 echo -e "${BLUE}Making a Local Directory for Images...${NC}"
 mkdir -p ~/MirrorPhotos
 
-echo -e "${GREEN}Enter the name of your Google Drive folder (the source):${NC}"
+echo -e "${GREEN}Enter the name of your Drive folder (the source):${NC}"
 read -r DRIVE_FOLDER_NAME
 
 echo -e "${BLUE}Testing Rclone Sync...${NC}"
-rclone sync gdrive:"$DRIVE_FOLDER_NAME" ~/MirrorPhotos -v
+rclone sync drive:"$DRIVE_FOLDER_NAME" ~/MirrorPhotos -v
 
 echo -e "${BLUE}Setting up Cron Job (Every 15 minutes)...${NC}"
 (crontab -l 2>/dev/null | grep -v "rclone sync"; echo "*/15 * * * * rclone sync gdrive:$DRIVE_FOLDER_NAME ~/MirrorPhotos") | crontab -
