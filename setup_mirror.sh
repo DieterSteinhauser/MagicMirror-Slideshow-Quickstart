@@ -36,7 +36,7 @@ echo -e "${BLUE}Testing Rclone Sync...${NC}"
 rclone sync drive:"$DRIVE_FOLDER_NAME" ~/MirrorPhotos -v
 
 echo -e "${BLUE}Setting up Cron Job (Every 15 minutes)...${NC}"
-(crontab -l 2>/dev/null | grep -v "rclone sync"; echo "*/15 * * * * rclone sync gdrive:$DRIVE_FOLDER_NAME ~/MirrorPhotos") | crontab -
+(crontab -l 2>/dev/null | grep -v "rclone sync"; echo "*/15 * * * * rclone sync drive:$DRIVE_FOLDER_NAME ~/MirrorPhotos") | crontab -
 
 echo -e "${BLUE}Installing MagicMirror...${NC}"
 echo -e "${GREEN}ACTION REQUIRED: Follow the prompts for the MagicMirror installation script.${NC}"
